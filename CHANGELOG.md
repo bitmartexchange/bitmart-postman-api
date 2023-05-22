@@ -3,3 +3,4 @@
 #### 2023-05-19
 - Added Sign pre-request script
 - Added `BitMart Pro API` Environments config
+- Added `Spot`, `Furutes` collections
