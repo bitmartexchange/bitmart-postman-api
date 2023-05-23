@@ -42,8 +42,7 @@ Debugging can be done by editing the Pre-request Script tab.
 
 #### 3. Error Header X-BM-SIGN wrong.
 1. no choice environment, plz select `BitMart Pro API` environment
-2. API key is not set in 
-3. API key or secret key or memo is not correct.
+2. secret key or memo is not correct.
   <p align="center"><img src="assets/api_key.png" /></p>
 
 
