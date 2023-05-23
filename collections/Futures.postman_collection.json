@@ -347,6 +347,50 @@
 					"response": []
 				},
 				{
+					"name": "Get Transfer List (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"currency\":\"USDT\",\n  \"amount\":\"10\",\n  \"type\":\"spot_to_contract\",\n  \"recvWindow\":5000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/account/v1/transfer-contract",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"account",
+								"v1",
+								"transfer-contract"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Submit Order (SIGNED)",
 					"request": {
 						"method": "POST",
@@ -561,6 +605,50 @@
 								"contract",
 								"private",
 								"cancel-plan-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currency\":\"USDT\",\n    \"time_start\":1684391137804,\n    \"time_end\":1684392577804,\n    \"page\":1,\n    \"limit\":10,\n    \"recvWindow\":5000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/account/v1/transfer-contract-list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"account",
+								"v1",
+								"transfer-contract-list"
 							]
 						}
 					},
