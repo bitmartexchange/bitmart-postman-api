@@ -16,8 +16,8 @@
     
     
 - Step4: Unzip the downloaded git project, then drag the entire project to the imported area.
-    <p align="center"><img src="assets/config_step3.png" /></p>
-    <p align="center"><img src="assets/config_step4.png" /></p>
+    <p align="center"><img src="assets/xxx.png" /></p>
+    <p align="center"><img src="assets/yyyy.png" /></p>
 
 - Step5: Find the `Environments` tab and fill in your API KEY.
     <p align="center"><img src="assets/config_step5.png" /></p>
