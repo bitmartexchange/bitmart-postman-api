@@ -271,6 +271,53 @@
 					"response": []
 				},
 				{
+					"name": "Get All Open Orders (KEYED)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/contract/private/get-open-orders?symbol=BTCUSDT&type=limit&order_state=all&limit=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"get-open-orders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT",
+									"description": "Symbol of the contract(like BTCUSDT)"
+								},
+								{
+									"key": "type",
+									"value": "limit",
+									"description": "Order type -limit -marke"
+								},
+								{
+									"key": "order_state",
+									"value": "all",
+									"description": "Order state\n-all(default)\n- partially_filled"
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"description": "The number of returned results, with a maximum of 100 and a default of 100\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Current Position (KEYED)",
 					"request": {
 						"method": "GET",
@@ -649,6 +696,222 @@
 								"account",
 								"v1",
 								"transfer-contract-list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Main-Sub Account",
+			"item": [
+				{
+					"name": "For Main-Account",
+					"item": [
+						{
+							"name": "Sub-Account to Main-Account (For Main Account) (SIGNED)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BM-KEY",
+										"value": "{{bitmart-access-key}}",
+										"type": "text"
+									},
+									{
+										"key": "X-BM-SIGN",
+										"value": "{{x-bm-sign}}",
+										"type": "text"
+									},
+									{
+										"key": "X-BM-TIMESTAMP",
+										"value": "{{x-bm-timestamp}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"requestNo\":\"4e2adcff-2122-1ce7-2557-4f65d2ce1ca5\",\n    \"amount\":\"1\",\n    \"currency\":\"USDT\",\n    \"subAccount\":\"subAccountName@xxx.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/account/contract/sub-account/main/v1/sub-to-main",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"account",
+										"contract",
+										"sub-account",
+										"main",
+										"v1",
+										"sub-to-main"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Main-Account to Sub-Account (For Main Account) (SIGNED)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BM-KEY",
+										"value": "{{bitmart-access-key}}",
+										"type": "text"
+									},
+									{
+										"key": "X-BM-SIGN",
+										"value": "{{x-bm-sign}}",
+										"type": "text"
+									},
+									{
+										"key": "X-BM-TIMESTAMP",
+										"value": "{{x-bm-timestamp}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"requestNo\":\"4e2adcff-2122-1ce7-2557-4f65d2ce1ca2\",\n    \"amount\":\"1\",\n    \"currency\":\"USDT\",\n    \"subAccount\":\"subAccountName@xxx.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/account/contract/sub-account/main/v1/main-to-sub",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"account",
+										"contract",
+										"sub-account",
+										"main",
+										"v1",
+										"main-to-sub"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "For Sub-Account",
+					"item": [
+						{
+							"name": "Sub-Account to Main-Account (For Sub-Account) (SIGNED)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-BM-KEY",
+										"value": "{{bitmart-access-key}}",
+										"type": "text"
+									},
+									{
+										"key": "X-BM-SIGN",
+										"value": "{{x-bm-sign}}",
+										"type": "text"
+									},
+									{
+										"key": "X-BM-TIMESTAMP",
+										"value": "{{x-bm-timestamp}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"requestNo\":\"4e2adcff-2122-1ce7-2557-4f65d2ce1ca2\",\n    \"amount\":\"1\",\n    \"currency\":\"USDT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/account/contract/sub-account/sub/v1/sub-to-main",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"account",
+										"contract",
+										"sub-account",
+										"sub",
+										"v1",
+										"sub-to-main"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Sub-Account Futures Wallet Balance (For Main Account) (KEYED)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/account/contract/sub-account/main/v1/wallet?subAccount=subAccountName@xxx.com&currency=USDT",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"account",
+								"contract",
+								"sub-account",
+								"main",
+								"v1",
+								"wallet"
+							],
+							"query": [
+								{
+									"key": "subAccount",
+									"value": "subAccountName@xxx.com"
+								},
+								{
+									"key": "currency",
+									"value": "USDT"
+								}
 							]
 						}
 					},
