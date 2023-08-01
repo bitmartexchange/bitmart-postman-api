@@ -700,6 +700,50 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Submit Leverage (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"leverage\":\"5\",\n  \"open_type\":\"isolated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/submit-leverage",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"submit-leverage"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -802,6 +846,56 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Get Sub-Account Transfer History (For Main Account) (KEYED)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-BM-KEY",
+										"value": "{{bitmart-access-key}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/account/contract/sub-account/main/v1/transfer-list?subAccount=subAccountName@xxx.com&limit=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"account",
+										"contract",
+										"sub-account",
+										"main",
+										"v1",
+										"transfer-list"
+									],
+									"query": [
+										{
+											"key": "subAccount",
+											"value": "subAccountName@xxx.com"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -869,16 +963,6 @@
 								"key": "X-BM-KEY",
 								"value": "{{bitmart-access-key}}",
 								"type": "text"
-							},
-							{
-								"key": "X-BM-SIGN",
-								"value": "{{x-bm-sign}}",
-								"type": "text"
-							},
-							{
-								"key": "X-BM-TIMESTAMP",
-								"value": "{{x-bm-timestamp}}",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -911,6 +995,51 @@
 								{
 									"key": "currency",
 									"value": "USDT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Futures Asset Transfer History (For Main/Sub Account) (KEYED)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/account/contract/sub-account/v1/transfer-history?limit=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"account",
+								"contract",
+								"sub-account",
+								"v1",
+								"transfer-history"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1"
 								}
 							]
 						}

@@ -1,5 +1,18 @@
 # Changelog
 
+#### 2023-07-22
+- New endpoints for trading
+    - <code>/contract/private/submit-leverage</code>Submit Leverage (SIGNED)
+
+---
+
+#### 2023-07-07
+- New endpoints for Sub-Account
+    - <code>/account/contract/sub-account/main/v1/transfer-list</code>Get Sub-Account Transfer History (For Main Account）(KEYED)
+    - <code>/account/contract/sub-account/v1/transfer-history</code>Get Account Futures Asset Transfer History (For Main/Sub Account）(KEYED)
+
+
+---
 
 #### 2023-06-20
 - New endpoints for futures Sub-Account
