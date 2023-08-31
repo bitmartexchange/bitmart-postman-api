@@ -10,7 +10,189 @@
 			"name": "Public Market Data",
 			"item": [
 				{
-					"name": "Get Currency List",
+					"name": "history",
+					"item": [
+						{
+							"name": "Get Ticker of All Pairs (V2)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/spot/v2/ticker",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"spot",
+										"v2",
+										"ticker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Ticker of a Trading Pair (V1)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/spot/v1/ticker_detail?symbol=BTC_USDT",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"spot",
+										"v1",
+										"ticker_detail"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTC_USDT",
+											"description": "Trading pair (e.g. BMX_USDT)"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get K-Line Step (V1)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/spot/v1/steps",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"spot",
+										"v1",
+										"steps"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get K-Line (V1)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/spot/v1/symbols/kline?symbol=BTC_USDT&from=1684719719&to=1684723319&step=15",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"spot",
+										"v1",
+										"symbols",
+										"kline"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTC_USDT",
+											"description": "Trading pair (e.g. BMX_USDT)"
+										},
+										{
+											"key": "from",
+											"value": "1684719719",
+											"description": "Start timestamp (in seconds, UTC+0 TimeZome)"
+										},
+										{
+											"key": "to",
+											"value": "1684723319",
+											"description": "End timestamp (in seconds, UTC+0 TimeZome)"
+										},
+										{
+											"key": "step",
+											"value": "15",
+											"description": "k-line step Steps (in minutes, default 1 minute)"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Depth (V1)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/spot/v1/symbols/book?symbol=BMX_ETH&precision=6",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"spot",
+										"v1",
+										"symbols",
+										"book"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BMX_ETH",
+											"description": "Trading pair (e.g. BMX_ETH)"
+										},
+										{
+											"key": "precision",
+											"value": "6",
+											"description": "Price precision, the range is defined in trading pair details"
+										},
+										{
+											"key": "size",
+											"value": "",
+											"description": "Number of results per request. The value can be transmitted [1-50], there are altogether [2-100] buying and selling depths",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Recent Trades (V1)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/spot/v1/symbols/trades?symbol=BMX_ETH",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"spot",
+										"v1",
+										"symbols",
+										"trades"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BMX_ETH",
+											"description": "Trading pair (e.g. BMX_USDT)"
+										},
+										{
+											"key": "N",
+											"value": "20",
+											"description": "Number of returned items, the default maximum is 50",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get Currency List (V1)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -29,7 +211,7 @@
 					"response": []
 				},
 				{
-					"name": "Get List of Trading Pairs",
+					"name": "Get Trading Pairs List (V1)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -48,7 +230,7 @@
 					"response": []
 				},
 				{
-					"name": "Get List of Trading Pair Details",
+					"name": "Get Trading Pair Details (V1）",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -68,44 +250,45 @@
 					"response": []
 				},
 				{
-					"name": "Get Ticker of All Pairs (V2)",
+					"name": "Get Ticker of All Pairs (V3)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/spot/v2/ticker",
+							"raw": "{{host}}/spot/quotation/v3/tickers",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"spot",
-								"v2",
-								"ticker"
+								"quotation",
+								"v3",
+								"tickers"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get Ticker of a Trading Pair",
+					"name": "Get Ticker of a Trading Pair (V3)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/spot/v1/ticker_detail?symbol=BTC_USDT",
+							"raw": "{{host}}/spot/quotation/v3/ticker?symbol=BTC_USDT",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"spot",
-								"v1",
-								"ticker_detail"
+								"quotation",
+								"v3",
+								"ticker"
 							],
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTC_USDT",
-									"description": "Trading pair (e.g. BMX_USDT)"
+									"value": "BTC_USDT"
 								}
 							]
 						}
@@ -113,97 +296,43 @@
 					"response": []
 				},
 				{
-					"name": "Get K-Line Step",
+					"name": "Get Latest K-Line (V3)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/spot/v1/steps",
+							"raw": "{{host}}/spot/quotation/v3/lite-klines?symbol=BTC_USDT&step=60",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"spot",
-								"v1",
-								"steps"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get K-Line",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/spot/v1/symbols/kline?symbol=BTC_USDT&from=1684719719&to=1684723319&step=15",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"spot",
-								"v1",
-								"symbols",
-								"kline"
+								"quotation",
+								"v3",
+								"lite-klines"
 							],
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTC_USDT",
-									"description": "Trading pair (e.g. BMX_USDT)"
-								},
-								{
-									"key": "from",
-									"value": "1684719719",
-									"description": "Start timestamp (in seconds, UTC+0 TimeZome)"
-								},
-								{
-									"key": "to",
-									"value": "1684723319",
-									"description": "End timestamp (in seconds, UTC+0 TimeZome)"
+									"value": "BTC_USDT"
 								},
 								{
 									"key": "step",
-									"value": "15",
-									"description": "k-line step Steps (in minutes, default 1 minute)"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Depth",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/spot/v1/symbols/book?symbol=BMX_ETH&precision=6",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"spot",
-								"v1",
-								"symbols",
-								"book"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BMX_ETH",
-									"description": "Trading pair (e.g. BMX_ETH)"
+									"value": "60"
 								},
 								{
-									"key": "precision",
-									"value": "6",
-									"description": "Price precision, the range is defined in trading pair details"
+									"key": "before",
+									"value": "1525760116",
+									"disabled": true
 								},
 								{
-									"key": "size",
-									"value": "",
-									"description": "Number of results per request. The value can be transmitted [1-50], there are altogether [2-100] buying and selling depths",
+									"key": "after",
+									"value": "1525769116",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100",
 									"disabled": true
 								}
 							]
@@ -212,32 +341,103 @@
 					"response": []
 				},
 				{
-					"name": "Get Recent Trades",
+					"name": "Get History K-Line (V3)",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/spot/v1/symbols/trades?symbol=BMX_ETH",
+							"raw": "{{host}}/spot/quotation/v3/klines?symbol=BMX_ETH&step=15&limit=100",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"spot",
-								"v1",
-								"symbols",
+								"quotation",
+								"v3",
+								"klines"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BMX_ETH"
+								},
+								{
+									"key": "step",
+									"value": "15"
+								},
+								{
+									"key": "before",
+									"value": "1525760116",
+									"disabled": true
+								},
+								{
+									"key": "after",
+									"value": "1525769116",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Depth (V3)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/spot/quotation/v3/books?symbol=BMX_USDT&limit=2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"spot",
+								"quotation",
+								"v3",
+								"books"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BMX_USDT"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Recent Trades (V3)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/spot/quotation/v3/trades?symbol=BMX_USDT&limit=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"spot",
+								"quotation",
+								"v3",
 								"trades"
 							],
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BMX_ETH",
-									"description": "Trading pair (e.g. BMX_USDT)"
+									"value": "BMX_USDT"
 								},
 								{
-									"key": "N",
-									"value": "20",
-									"description": "Number of returned items, the default maximum is 50",
-									"disabled": true
+									"key": "limit",
+									"value": "1"
 								}
 							]
 						}
@@ -1415,7 +1615,7 @@
 					"name": "For Main Account",
 					"item": [
 						{
-							"name": "Sub-Account Spot Asset Transfer (For Main Account) (SIGNED)",
+							"name": "Sub-Account to Main-Account (For Main Account) (SIGNED)",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1461,7 +1661,7 @@
 							"response": []
 						},
 						{
-							"name": "Main Account Spot Asset Transfer (For Main Account) (SIGNED)",
+							"name": "Main-Account to Sub-Account (For Main Account) (SIGNED)",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1507,7 +1707,7 @@
 							"response": []
 						},
 						{
-							"name": "Sub-Account to Sub-Account Spot Asset Transfer (For Main Account) (SIGNED)",
+							"name": "Sub-Account to Sub-Account (For Main Account) (SIGNED)",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1553,7 +1753,7 @@
 							"response": []
 						},
 						{
-							"name": "Query Sub-Account Spot Asset Transfer History (For Main Account) (KEYED)",
+							"name": "Get Sub-Account Transfer History (For Main Account) (KEYED)",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1736,7 +1936,7 @@
 					"name": "For Sub Account",
 					"item": [
 						{
-							"name": "Sub-Account Spot Asset Transfer (For Sub-Account) (SIGNED)",
+							"name": "Sub-Account to Main-Account (For Sub-Account) (SIGNED)",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1782,7 +1982,7 @@
 							"response": []
 						},
 						{
-							"name": "Sub-Account to Sub-Account Spot Asset Transfer (For Sub-Account) (SIGNED)",
+							"name": "Sub-Account to Sub-Account (For Sub-Account) (SIGNED)",
 							"request": {
 								"method": "POST",
 								"header": [
@@ -1830,7 +2030,7 @@
 					]
 				},
 				{
-					"name": "Get Account Spot Asset Transfer History (KEYED)",
+					"name": "Get Account Spot Asset Transfer History (For Main/Sub Account) (KEYED)",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
