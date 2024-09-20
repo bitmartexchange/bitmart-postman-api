@@ -318,6 +318,53 @@
 					"response": []
 				},
 				{
+					"name": "Get All Current Plan Orders (KEYED)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/contract/private/current-plan-order?symbol=BTCUSDT&type=limit&plan_type=plan&limit=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"current-plan-order"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT",
+									"description": "Symbol of the contract(like BTCUSDT)"
+								},
+								{
+									"key": "type",
+									"value": "limit",
+									"description": "Order type -limit -marke"
+								},
+								{
+									"key": "plan_type",
+									"value": "plan",
+									"description": "Plan order type\n-plan\n- profit_loss\ndefault all"
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"description": "The number of returned results, with a maximum of 100 and a default of 100\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Current Position (KEYED)",
 					"request": {
 						"method": "GET",
@@ -337,6 +384,38 @@
 								"contract",
 								"private",
 								"position"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT",
+									"description": "Symbol of the contract(like BTCUSDT)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current Position Risk Details(KEYED)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/contract/private/position-risk?symbol=BTCUSDT",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"position-risk"
 							],
 							"query": [
 								{
@@ -744,6 +823,182 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Submit TP or SL Order (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"side\":2,\n  \"type\":\"take_profit\",\n  \"size\":10,\n  \"trigger_price\":\"2000\",\n  \"executive_price\":\"1450\",\n  \"price_type\":1,\n  \"plan_category\":1,\n  \"client_order_id\":\"123456789\",\n  \"category\":\"limit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/submit-tp-sl-order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"submit-tp-sl-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Plan Order (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"client_order_id\":\"123456789\",\n  \"order_id\":\"220906179559421\",\n  \"trigger_price\":\"2000\",\n  \"executive_price\":\"1450\",\n  \"price_type\":1,\n  \"type\":\"limit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/modify-plan-order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"modify-plan-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Preset Plan Order (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"order_id\":\"220609666322019\",\n  \"preset_take_profit_price\":\"2000\",\n  \"preset_stop_loss_price\":\"1900\",\n  \"preset_take_profit_price_type\":1,\n  \"preset_stop_loss_price_type\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/modify-preset-plan-order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"modify-preset-plan-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify TP/SL Order (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"trigger_price\":\"2100\",\n  \"executive_price\":\"2100\",\n  \"price_type\":2,\n  \"order_id\":\"37758000001\",\n  \"client_order_id\":\"\",\n  \"plan_category\":2,\n  \"category\": \"limit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/modify-tp-sl-order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"modify-tp-sl-order"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1040,6 +1295,144 @@
 								{
 									"key": "limit",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Futures Affiliate",
+			"item": [
+				{
+					"name": "Get Futures Rebate List(KEYED)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/contract/private/affiliate/rebate-list?page=1&size=10&currency=USDT",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"affiliate",
+								"rebate-list"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": null,
+									"description": "user ID\n",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number\n"
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"description": "Number of records per page\n"
+								},
+								{
+									"key": "currency",
+									"value": "USDT",
+									"description": "query currency\n"
+								},
+								{
+									"key": "rebate_start_time",
+									"value": null,
+									"description": "Query rebate start timestamp\n",
+									"disabled": true
+								},
+								{
+									"key": "rebate_end_time",
+									"value": null,
+									"description": "Query rebate end timestamp\n",
+									"disabled": true
+								},
+								{
+									"key": "register_start_time",
+									"value": null,
+									"description": "Query register start timestamp\n",
+									"disabled": true
+								},
+								{
+									"key": "register_end_time",
+									"value": null,
+									"description": "Query register end timestamp\n",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Futures Trade List(KEYED)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/contract/private/affiliate/trade-list?user_id=123123121&page=1&size=10&type=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"affiliate",
+								"trade-list"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "123123121",
+									"description": "user ID\n"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Page number\n"
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"description": "Number of records per page\n"
+								},
+								{
+									"key": "type",
+									"value": "1",
+									"description": "Query type:\n-1=U-based\n-2=Coin-based"
+								},
+								{
+									"key": "start_time",
+									"value": "",
+									"description": "Query start timestamp\n",
+									"disabled": true
+								},
+								{
+									"key": "end_time",
+									"value": "",
+									"description": "Query end timestamp\n",
+									"disabled": true
 								}
 							]
 						}
