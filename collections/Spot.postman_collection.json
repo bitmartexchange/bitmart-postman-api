@@ -10,188 +10,6 @@
 			"name": "Public Market Data",
 			"item": [
 				{
-					"name": "history",
-					"item": [
-						{
-							"name": "Get Ticker of All Pairs (V2)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/spot/v2/ticker",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"spot",
-										"v2",
-										"ticker"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Ticker of a Trading Pair (V1)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/spot/v1/ticker_detail?symbol=BTC_USDT",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"spot",
-										"v1",
-										"ticker_detail"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": "BTC_USDT",
-											"description": "Trading pair (e.g. BMX_USDT)"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get K-Line Step (V1)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/spot/v1/steps",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"spot",
-										"v1",
-										"steps"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get K-Line (V1)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/spot/v1/symbols/kline?symbol=BTC_USDT&from=1684719719&to=1684723319&step=15",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"spot",
-										"v1",
-										"symbols",
-										"kline"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": "BTC_USDT",
-											"description": "Trading pair (e.g. BMX_USDT)"
-										},
-										{
-											"key": "from",
-											"value": "1684719719",
-											"description": "Start timestamp (in seconds, UTC+0 TimeZome)"
-										},
-										{
-											"key": "to",
-											"value": "1684723319",
-											"description": "End timestamp (in seconds, UTC+0 TimeZome)"
-										},
-										{
-											"key": "step",
-											"value": "15",
-											"description": "k-line step Steps (in minutes, default 1 minute)"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Depth (V1)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/spot/v1/symbols/book?symbol=BMX_ETH&precision=6",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"spot",
-										"v1",
-										"symbols",
-										"book"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": "BMX_ETH",
-											"description": "Trading pair (e.g. BMX_ETH)"
-										},
-										{
-											"key": "precision",
-											"value": "6",
-											"description": "Price precision, the range is defined in trading pair details"
-										},
-										{
-											"key": "size",
-											"value": "",
-											"description": "Number of results per request. The value can be transmitted [1-50], there are altogether [2-100] buying and selling depths",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Recent Trades (V1)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/spot/v1/symbols/trades?symbol=BMX_ETH",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"spot",
-										"v1",
-										"symbols",
-										"trades"
-									],
-									"query": [
-										{
-											"key": "symbol",
-											"value": "BMX_ETH",
-											"description": "Trading pair (e.g. BMX_USDT)"
-										},
-										{
-											"key": "N",
-											"value": "20",
-											"description": "Number of returned items, the default maximum is 50",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Get Currency List (V1)",
 					"request": {
 						"method": "GET",
@@ -929,7 +747,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"symbol\":\"BTC_USDT\",\n    \"side\":\"sell\",\n    \"type\":\"limit\",\n    \"size\":\"10\",\n    \"price\":\"7000000\"\n}",
+							"raw": "{\n    \"symbol\":\"BTC_USDT\",\n    \"side\":\"sell\",\n    \"type\":\"limit\",\n    \"size\":\"10\",\n    \"price\":\"7000000\",\n    \"clientOrderId\":\"dd23d23d23d23\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -952,7 +770,7 @@
 					"response": []
 				},
 				{
-					"name": "New Batch Order(v2) (SIGNED)",
+					"name": "New Batch Order(v4) (SIGNED)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -974,7 +792,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"order_params\":[{\n        \"symbol\":\"BTC_USDT\",\n        \"size\":\"0.1\",\n        \"price\":\"9000000\",\n        \"side\":\"sell\",\n        \"type\":\"limit\"\n        },{\n        \"symbol\":\"BTC_USDT\",\n        \"size\":\"0.1\",\n        \"price\":\"9000000\",\n        \"side\":\"sell\",\n        \"type\":\"limit\"\n        }\n    ]\n}",
+							"raw": "{\n    \"symbol\":\"BTC_USDT\",\n    \"recvWindow\": 5000,\n    \"orderParams\":[{\n        \"size\":\"0.1\",\n        \"price\":\"9000000\",\n        \"side\":\"sell\",\n        \"type\":\"limit\"\n        },{\n        \"size\":\"0.1\",\n        \"price\":\"9000000\",\n        \"side\":\"sell\",\n        \"type\":\"limit\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -982,13 +800,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/spot/v2/batch_orders",
+							"raw": "{{host}}/spot/v4/batch_orders",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"spot",
-								"v2",
+								"v4",
 								"batch_orders"
 							]
 						}
@@ -1040,7 +858,51 @@
 					"response": []
 				},
 				{
-					"name": "Cancel Batch Order(v1) (SIGNED)",
+					"name": "Cancel Batch Order(v4) (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"BTC_USDT\",\n  \"orderIds\":[\n    \"5e925f3981\"\n  ],\n  \"recvWindow\":5000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/spot/v4/cancel_orders",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"spot",
+								"v4",
+								"cancel_orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel All Order(v4) (SIGNED)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1070,14 +932,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/spot/v1/cancel_orders",
+							"raw": "{{host}}/spot/v4/cancel_all",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"spot",
-								"v1",
-								"cancel_orders"
+								"v4",
+								"cancel_all"
 							]
 						}
 					},
