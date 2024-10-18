@@ -1,5 +1,12 @@
 # Changelog
 
+### v2024.10.17 Release
+#### New Features
+- New
+    - `/contract/private/trade-fee-rate` Get Trade Fee Rate (KEYED)
+
+---
+
 ### v2024.9.20 Release
 #### New Features
 - New

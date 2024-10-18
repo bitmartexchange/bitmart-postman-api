@@ -190,6 +190,38 @@
 			"name": "Futures Trading",
 			"item": [
 				{
+					"name": "Get Trade Fee Rate (KEYED)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/contract/private/trade-fee-rate?symbol=BTCUSDT",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"trade-fee-rate"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT",
+									"description": "Symbol of the contract(like BTCUSDT)"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Order Detail (KEYED)",
 					"request": {
 						"method": "GET",
