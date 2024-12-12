@@ -1,5 +1,14 @@
 # Changelog
 
+### v2024.12.12 Release
+#### New Features
+- New
+    - `/contract/public/funding-rate-history` Query Funding Rate History
+    - `/contract/private/transaction-history` Query Transaction History (KEYED)
+
+---
+
+
 ### v2024.10.17 Release
 #### New Features
 - New
