@@ -153,6 +153,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Funding Rate History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/contract/public/funding-rate-history?symbol=BTCUSDT&limit=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"public",
+								"funding-rate-history"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT",
+									"description": "Symbol of the contract(like BTCUSDT)"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Number of results per request. The maximum is 100; The default is 100\n"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -498,6 +529,60 @@
 									"value": "1662368179",
 									"description": "End time, default is the last 7 days",
 									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction History (KEYED)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/contract/private/transaction-history?symbol=BTCUSDT&flow_type=3&page_size=10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"transaction-history"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT",
+									"description": "Symbol of the contract(like BTCUSDT)"
+								},
+								{
+									"key": "start_time",
+									"value": "1662368173",
+									"description": "Start time, timestamp in ms\n",
+									"disabled": true
+								},
+								{
+									"key": "end_time",
+									"value": "1662368179",
+									"description": "End time, timestamp in ms\n",
+									"disabled": true
+								},
+								{
+									"key": "flow_type",
+									"value": "3",
+									"description": "Type\n- 0 = All (default)\n- 1 = Transfer\n- 2 = Realized PNL\n- 3 = Funding Fee\n- 4 = Commission Fee\n- 5 = Liquidation Clearance"
+								},
+								{
+									"key": "page_size",
+									"value": "10",
+									"description": "Default 100; max 1000\n"
 								}
 							]
 						}
