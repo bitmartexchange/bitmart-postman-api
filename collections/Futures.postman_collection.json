@@ -155,6 +155,47 @@
 					"response": []
 				},
 				{
+					"name": "Get MarkPrice K-line",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/contract/public/markprice-kline?symbol=BTCUSDT&step=1&start_time=1684737708&end_time=1684739708",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"public",
+								"markprice-kline"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT",
+									"description": "Symbol of the contract(like BTCUSDT)"
+								},
+								{
+									"key": "step",
+									"value": "1",
+									"description": "K-Line step, default is 1 minute. step: 1, 3, 5, 15, 30, 60, 120, 240, 360, 720, 1440, 4320, 10080\n"
+								},
+								{
+									"key": "start_time",
+									"value": "1684737708",
+									"description": "Start time. Timestamps need to be in seconds"
+								},
+								{
+									"key": "end_time",
+									"value": "1684739708",
+									"description": "End time. Timestamps need to be in seconds"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Funding Rate History",
 					"request": {
 						"method": "GET",
@@ -810,6 +851,50 @@
 					"response": []
 				},
 				{
+					"name": "Modify Plan Order (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"client_order_id\":\"123456789\",\n  \"order_id\":\"220906179559421\",\n  \"trigger_price\":\"2000\",\n  \"executive_price\":\"1450\",\n  \"price_type\":1,\n  \"type\":\"limit\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/modify-plan-order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"modify-plan-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Cancel Plan Order (SIGNED)",
 					"request": {
 						"method": "POST",
@@ -986,7 +1071,7 @@
 					"response": []
 				},
 				{
-					"name": "Modify Plan Order (SIGNED)",
+					"name": "Modify TP/SL Order (SIGNED)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1008,7 +1093,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"client_order_id\":\"123456789\",\n  \"order_id\":\"220906179559421\",\n  \"trigger_price\":\"2000\",\n  \"executive_price\":\"1450\",\n  \"price_type\":1,\n  \"type\":\"limit\"\n}",
+							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"trigger_price\":\"2100\",\n  \"executive_price\":\"2100\",\n  \"price_type\":2,\n  \"order_id\":\"37758000001\",\n  \"client_order_id\":\"\",\n  \"plan_category\":2,\n  \"category\": \"limit\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1016,14 +1101,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/contract/private/modify-plan-order",
+							"raw": "{{host}}/contract/private/modify-tp-sl-order",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"contract",
 								"private",
-								"modify-plan-order"
+								"modify-tp-sl-order"
 							]
 						}
 					},
@@ -1074,7 +1159,7 @@
 					"response": []
 				},
 				{
-					"name": "Modify TP/SL Order (SIGNED)",
+					"name": "Submit Trail Order (SIGNED)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1096,7 +1181,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"trigger_price\":\"2100\",\n  \"executive_price\":\"2100\",\n  \"price_type\":2,\n  \"order_id\":\"37758000001\",\n  \"client_order_id\":\"\",\n  \"plan_category\":2,\n  \"category\": \"limit\"\n}",
+							"raw": "{\n  \"symbol\":\"BTCUSDT\",\n  \"side\":1,\n  \"leverage\":\"10\",\n  \"open_type\":\"isolated\",\n  \"size\":10,\n  \"activation_price\":\"2000\",\n  \"callback_rate\":\"1\",\n  \"activation_price_type\":1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1104,14 +1189,58 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/contract/private/modify-tp-sl-order",
+							"raw": "{{host}}/contract/private/submit-trail-order",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"contract",
 								"private",
-								"modify-tp-sl-order"
+								"submit-trail-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Trail Order (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"BTCUSDT\",\n  \"order_id\": \"220906179559421\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/cancel-trail-order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"cancel-trail-order"
 							]
 						}
 					},
