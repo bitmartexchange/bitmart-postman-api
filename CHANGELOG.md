@@ -1,5 +1,16 @@
 # Changelog
 
+### v2025.02.23 Release
+#### New Features
+- New
+    - `/contract/public/markprice-kline` Get MarkPrice K-line
+    - `/contract/private/submit-trail-order` Submit Trail Order (SIGNED)
+    - `/contract/private/cancel-trail-order` Cancel Trail Order (SIGNED)
+    - `/account/v1/withdraw/address/list` Withdraw Address (KEYED)
+
+---
+
+
 ### v2024.12.12 Release
 #### New Features
 - New
