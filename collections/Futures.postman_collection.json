@@ -305,7 +305,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/contract/private/order?symbol=BTCUSDT&order_id=22060966632123123",
+							"raw": "{{host}}/contract/private/order?symbol=BTCUSDT&order_id=22060966632123123&account=futures",
 							"host": [
 								"{{host}}"
 							],
@@ -324,6 +324,10 @@
 									"key": "order_id",
 									"value": "22060966632123123",
 									"description": "Order ID"
+								},
+								{
+									"key": "account",
+									"value": "futures"
 								}
 							]
 						}
@@ -342,7 +346,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/contract/private/order-history?symbol=BTCUSDT",
+							"raw": "{{host}}/contract/private/order-history?symbol=BTCUSDT&account=futures",
 							"host": [
 								"{{host}}"
 							],
@@ -368,6 +372,10 @@
 									"value": "1662368179",
 									"description": "End time, default is the last 7 days",
 									"disabled": true
+								},
+								{
+									"key": "account",
+									"value": "futures"
 								}
 							]
 						}
@@ -480,7 +488,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/contract/private/position?symbol=BTCUSDT",
+							"raw": "{{host}}/contract/private/position?symbol=BTCUSDT&account=futures",
 							"host": [
 								"{{host}}"
 							],
@@ -494,6 +502,46 @@
 									"key": "symbol",
 									"value": "BTCUSDT",
 									"description": "Symbol of the contract(like BTCUSDT)"
+								},
+								{
+									"key": "account",
+									"value": "futures"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current Position V2(KEYED)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/contract/private/position-v2?symbol=BTCUSDT&account=futures",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"position-v2"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT",
+									"description": "Symbol of the contract(like BTCUSDT)"
+								},
+								{
+									"key": "account",
+									"value": "futures"
 								}
 							]
 						}
@@ -512,7 +560,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/contract/private/position-risk?symbol=BTCUSDT",
+							"raw": "{{host}}/contract/private/position-risk?symbol=BTCUSDT&account=futures",
 							"host": [
 								"{{host}}"
 							],
@@ -526,6 +574,10 @@
 									"key": "symbol",
 									"value": "BTCUSDT",
 									"description": "Symbol of the contract(like BTCUSDT)"
+								},
+								{
+									"key": "account",
+									"value": "futures"
 								}
 							]
 						}
@@ -544,7 +596,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/contract/private/trades?symbol=BTCUSDT",
+							"raw": "{{host}}/contract/private/trades?symbol=BTCUSDT&account=futures",
 							"host": [
 								"{{host}}"
 							],
@@ -570,6 +622,10 @@
 									"value": "1662368179",
 									"description": "End time, default is the last 7 days",
 									"disabled": true
+								},
+								{
+									"key": "account",
+									"value": "futures"
 								}
 							]
 						}
@@ -624,6 +680,43 @@
 									"key": "page_size",
 									"value": "10",
 									"description": "Default 100; max 1000\n"
+								},
+								{
+									"key": "account",
+									"value": "futures",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Position Mode (KEYED)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/contract/private/get-position-mode",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"get-position-mode"
+							],
+							"query": [
+								{
+									"key": "account",
+									"value": "futures",
+									"disabled": true
 								}
 							]
 						}
@@ -719,6 +812,50 @@
 					"response": []
 				},
 				{
+					"name": "Modify Limit Order (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"order_id\":220906179559421,\n  \"price\":\"1450\",\n  \"size\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/modify-limit-order",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"modify-limit-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Cancel Order (SIGNED)",
 					"request": {
 						"method": "POST",
@@ -801,6 +938,131 @@
 								"contract",
 								"private",
 								"cancel-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Timed Cancel All Orders (SIGNED)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `",
+									"<canvas id=\"myChart\" height=\"75\"></canvas>",
+									"",
+									"<script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js\"></script> ",
+									"",
+									"<script>",
+									"    var ctx = document.getElementById(\"myChart\");",
+									"",
+									"    var myChart = new Chart(ctx, {",
+									"        type: \"bar\",",
+									"        data: {",
+									"            labels: [\"Set Time\", \"Cancel Time\"],",
+									"            datasets: [{",
+									"                data: [],",
+									"                ",
+									"                // Change these colours to customize the chart",
+									"                backgroundColor: [\"#003f5c\", \"#58508d\"],",
+									"            }]",
+									"        },",
+									"        options: {",
+									"            legend: { display: false },",
+									"            title: {",
+									"                display: true,",
+									"                text: 'Cancel All After'",
+									"            },",
+									"            scales: {",
+									"                xAxes: [{",
+									"                    display: true,",
+									"                    scaleLabel: {",
+									"                        display: true,",
+									"                        labelString: 'Time'",
+									"                    }",
+									"                }],",
+									"                yAxes: [{",
+									"                    display: true,",
+									"                    scaleLabel: {",
+									"                        display: true,",
+									"                        labelString: 'Value'",
+									"                    }",
+									"                }]",
+									"            }",
+									"        }",
+									"",
+									"    });",
+									"",
+									"    // Access the data passed to pm.visualizer.set() from the JavaScript",
+									"    // code of the Visualizer template",
+									"    pm.getData(function (err, value) {",
+									"        myChart.data.datasets[0].data = [value.response.data.set_time, value.response.data.cancel_time];",
+									"        myChart.update();",
+									"    });",
+									"",
+									"</script>`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    var res = pm.response.json();",
+									"    ",
+									"    var visualizerData = {",
+									"        ",
+									"        // Labels take an array of strings",
+									"        labels: [\"Set Time\", \"Cancel Time\"],",
+									"        ",
+									"        // Data takes an array of numbers",
+									"        data: [res.data.set_time, res.data.cancel_time]",
+									"    };",
+									"",
+									"    return {response: visualizerData};",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"symbol\":\"ETHUSDT\",\n  \"timeout\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/cancel-all-after",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"cancel-all-after"
 							]
 						}
 					},
@@ -1241,6 +1503,50 @@
 								"contract",
 								"private",
 								"cancel-trail-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Position Mode (SIGNED)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-BM-KEY",
+								"value": "{{bitmart-access-key}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-SIGN",
+								"value": "{{x-bm-sign}}",
+								"type": "text"
+							},
+							{
+								"key": "X-BM-TIMESTAMP",
+								"value": "{{x-bm-timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"position_mode\":\"hedge_mode\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/contract/private/set-position-mode",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"contract",
+								"private",
+								"set-position-mode"
 							]
 						}
 					},
