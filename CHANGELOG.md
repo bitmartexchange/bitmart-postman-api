@@ -1,5 +1,24 @@
 # Changelog
 
+
+### v2025.05.08 Release
+#### New Features
+- New
+    - `/contract/private/position-v2` Get Current Position V2 (KEYED)
+    - `/contract/private/set-position-mode` Set Position Mode (SIGNED)
+    - `/contract/private/get-position-mode` Get Position Mode (KEYED)
+    - `/contract/private/cancel-all-after` Canceling all contract orders timed (SIGNED)
+    - `/contract/private/modify-limit-order` Modifying contract limit orders(SIGNED)
+- Update
+    - `/contract/private/order` Get Order Detail (KEYED)
+    - `/contract/private/order-history` Get Order History (KEYED)
+    - `/contract/private/position` Get Current Position (KEYED)
+    - `/contract/private/position-risk` Get Current Position Risk Details(KEYED)
+    - `/contract/private/trades` Get Order Trade (KEYED)
+    - `/contract/private/transaction-history` Get Transaction History (KEYED)
+      * Feat：Add new request field account, support differentiation between futures and copy_trading
+
+
 ### v2025.02.23 Release
 #### New Features
 - New
