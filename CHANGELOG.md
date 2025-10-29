@@ -1,6 +1,17 @@
 # Changelog
 
 
+### v2025.09.23 Release
+#### New Features
+- New
+    - `/contract/public/leverage-bracket` Get Current Leverage Risk Limit
+    - `/contract/public/market-trade` Query the latest trade data
+- Update
+    - `/contract/private/order-history` Get Order History
+    - `/spot/v2/submit_order New Order(v2)` (SIGNED)
+    - `/spot/v4/batch_orders New Batch Order(v4)` (SIGNED)
+
+
 ### v2025.05.08 Release
 #### New Features
 - New
