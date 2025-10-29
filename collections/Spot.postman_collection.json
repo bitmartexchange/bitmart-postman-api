@@ -746,7 +746,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"symbol\":\"BTC_USDT\",\n    \"side\":\"sell\",\n    \"type\":\"limit\",\n    \"size\":\"10\",\n    \"price\":\"700000\"\n}",
+							"raw": "{\n    \"symbol\":\"BTC_USDT\",\n    \"side\":\"sell\",\n    \"type\":\"limit\",\n    \"size\":\"10\",\n    \"price\":\"700000\",\n    \"stpMode\":\"cancel_maker\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -923,7 +923,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"symbol\":\"BTC_USDT\",\n    \"recvWindow\": 5000,\n    \"orderParams\":[{\n        \"size\":\"0.1\",\n        \"price\":\"9000000\",\n        \"side\":\"sell\",\n        \"type\":\"limit\"\n        },{\n        \"size\":\"0.1\",\n        \"price\":\"9000000\",\n        \"side\":\"sell\",\n        \"type\":\"limit\"\n        }\n    ]\n}",
+							"raw": "{\n    \"symbol\":\"BTC_USDT\",\n    \"recvWindow\": 5000,\n    \"orderParams\":[{\n        \"size\":\"0.1\",\n        \"price\":\"9000000\",\n        \"side\":\"sell\",\n        \"type\":\"limit\",\n        \"stpMode\":\"none\"\n        },{\n        \"size\":\"0.1\",\n        \"price\":\"9000000\",\n        \"side\":\"sell\",\n        \"type\":\"limit\",\n        \"stpMode\":\"cancel_maker\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1191,7 +1191,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"symbol\":\"BTC_USDT\",\n  \"orderMode\":\"spot\",\n  \"startTime\":1682239845952,\n  \"endTime\":1682239850952,\n  \"limit\":10,\n  \"recvWindow\":5000\n}",
+							"raw": "{\n  \"symbol\":\"BTC_USDT\",\n  \"orderMode\":\"spot\",\n  \"startTime\":1744787545000,\n  \"endTime\":1747379545000,\n  \"limit\":10,\n  \"recvWindow\":5000\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1199,7 +1199,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/spot/v4/query/history-orders",
+							"raw": "{{host}}/spot/v4/query/trades",
 							"host": [
 								"{{host}}"
 							],
@@ -1207,7 +1207,7 @@
 								"spot",
 								"v4",
 								"query",
-								"history-orders"
+								"trades"
 							]
 						}
 					},
